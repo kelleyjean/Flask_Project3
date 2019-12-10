@@ -1,8 +1,6 @@
 from flask import Flask
-import flask_sqlalchemy
 
 from models import db
-import config
 from config import DATABASE_CONNECTION_URI
 
 

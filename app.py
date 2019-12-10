@@ -2,7 +2,7 @@ import json
 
 from flask import request
 
-import create_app
+from ini import create_app
 from models import Cats, db
 
 app = create_app()
