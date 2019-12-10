@@ -1,4 +1,4 @@
-from models import db
+from .models import db
 
 
 def get_all(model):

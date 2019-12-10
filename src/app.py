@@ -2,15 +2,15 @@ import json
 
 from flask import request
 
-from ini import create_app
-from models import Cats, db
+from . import create_app, database
+from .models import Cats
 
 app = create_app()
 
 
 @app.route('/', methods=['GET'])
 def fetch():
-    cats = Cats.query.all()
+    cats = database.get_all(Cats)
     all_cats = []
     for cat in cats:
         new_cat = {
@@ -31,16 +31,13 @@ def add():
     price = data['price']
     breed = data['breed']
 
-    cat = Cats(name=name, price=price, breed=breed)
-    db.session.add(cat)
-    db.session.commit()
+    database.add_instance(Cats, name=name, price=price, breed=breed)
     return json.dumps("Added"), 200
 
 
 @app.route('/remove/<cat_id>', methods=['DELETE'])
 def remove(cat_id):
-    Cats.query.filter_by(id=cat_id).delete()
-    db.session.commit()
+    database.delete_instance(Cats, id=cat_id)
     return json.dumps("Deleted"), 200
 
 
@@ -48,7 +45,5 @@ def remove(cat_id):
 def edit(cat_id):
     data = request.get_json()
     new_price = data['price']
-    cat_to_update = Cats.query.filter_by(id=cat_id).all()[0]
-    cat_to_update.price = new_price
-    db.session.commit()
+    database.edit_instance(Cats, id=cat_id, price=new_price)
     return json.dumps("Edited"), 200
