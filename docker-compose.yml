@@ -1,13 +1,15 @@
 version: '3.5'
 services:
   database:
-    container_name: postgres
-    image: postgres:latest
+    container_name: mysql
+    image: mysql:latest
     env_file: database.conf
+    expose:
+      - "3306"
     ports:
-      - 5432:5432
+      - "3306:3306"
     volumes:
-      - db_volume:/var/lib/postgresql
+      - db_volume:/var/lib/mysql
 
 volumes:
   db_volume:
