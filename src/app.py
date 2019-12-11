@@ -2,7 +2,7 @@ import json
 
 from flask import request
 
-from . import create_app, database
+from src import create_app, database
 from .models import Cats
 
 app = create_app()
