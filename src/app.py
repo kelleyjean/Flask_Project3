@@ -1,11 +1,9 @@
 import json
 
-
 from flask import request
 
-from src import create_app, database
-from src.models import Cats
-
+from . import create_app, database
+from .models import Cats
 
 app = create_app()
 

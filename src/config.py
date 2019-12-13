@@ -1,5 +1,4 @@
 import os
-import sqlalchemy.dialects.sqlite
 
 '''
 user = os.environ['POSTGRES_USER']
@@ -10,12 +9,8 @@ port = os.environ['POSTGRES_PORT']
 '''
 user = 'test'
 password = 'password'
-host = 'localhost'
+host = ''
 database = 'example'
-port = '3306'
+port = '5432'
 
-DATABASE_CONNECTION_URI = f'mysql+pyodbc://{user}:{password}@{host}:{port}/{database}'
-
-'''
-    f'mysql+psycopg2://{user}:{password}@{host}:{port}/{database}'
-'''
+DATABASE_CONNECTION_URI = f'postgresql+psycopg2://{user}:{password}@{host}:{port}/{database}'
