@@ -3,8 +3,8 @@ from marshmallow import fields, Schema
 import datetime
 
 
-from . import db, bcrypt
-# from ..app import bcrypt
+from . import db
+from ..app import bcrypt
 from .BlogpostModel import BlogpostSchema
 
 
